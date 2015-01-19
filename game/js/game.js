@@ -11,25 +11,39 @@ var cursors;
 
 function preload() {
 
-    game.load.tilemap('green', 'assets/tilemaps/green.json', null, Phaser.Tilemap.TILED_JSON);
+    // Uncomment for to use Tiled map
+    //game.load.tilemap('green', 'assets/tilemaps/green.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles', 'assets/tilemaps/green.png');
 
 }
 
 function create() {
-    game.physics.startSystem(Phaser.Physics.P2);
+    // Uncomment for use with the Tiled map
+    // map = game.add.tilemap('green');
+    // map.addTilesetImage('Green Map', 'tiles');
+    // layer = map.createLayer('Tile Layer 1');
+    // layer.resizeWorld();
 
-    map = game.add.tilemap('green');
-    map.addTilesetImage('Green Map', 'tiles');
+    //  Creates a blank tilemap
+    map = game.add.tilemap();
 
-    layer = map.createLayer('Tile Layer 1');
+    //  Add a Tileset image to the map
+    
+    map.addTilesetImage('tiles', 'tiles', 64, 64, 0, 0, 1);
+
+    //  Creates a new blank layer and sets the map dimensions.
+    //  In this case the map is 16x12 tiles in size and the tiles are 64x64 pixels in size.
+    layer = map.create('level1', 16, 12, 64, 64);
+    layer.scrollFactorX = 0.5;
+    layer.scrollFactorY = 0.5;
+
+    //  Resize the world
     layer.resizeWorld();
 
     cursors = game.input.keyboard.createCursorKeys();
     game.input.onDown.add(GenerateMap, this);
 
     GenerateMap();
-
 }
 
 function update() {
