@@ -6,7 +6,7 @@
 
     gulp.task('serve', function(cb) {
         connect.server({
-            root: '.',
+            root: ['.', 'game'],
             https: true,
             livereload: true
         });
@@ -18,6 +18,6 @@
         return gulp.src(['game/**/*.*'])
             .pipe(connect.reload());
     });
-
+    
     gulp.watch(['game/**/*.*'], ['reload']);
 }());
