@@ -1,0 +1,8 @@
+#game {
+  max-width: 100%;
+}
+#game canvas {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+}

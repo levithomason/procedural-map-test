@@ -11,7 +11,7 @@ var cursors;
 
 function preload() {
 
-    // Uncomment for to use Tiled map
+    // Uncomment for use with the Tiled map
     //game.load.tilemap('green', 'assets/tilemaps/green.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles', 'assets/tilemaps/green.png');
 
