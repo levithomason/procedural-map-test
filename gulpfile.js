@@ -35,7 +35,11 @@
     });
 
     gulp.task('reload', function() {
-        return gulp.src([path.game + glob.allFiles])
+        return gulp.src([
+            path.assets + glob.allFiles,
+            path.css + glob.allFiles,
+            path.js + glob.allFiles,
+        ])
             .pipe(connect.reload());
     });
 
