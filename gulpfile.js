@@ -5,12 +5,13 @@
     var connect = require('gulp-connect');
     var open = require('gulp-open');
 
-    var path = {
-        assets: './assets/',
-        css: './css/',
-        js: './js/',
-        indexHtml: './index.html',
-    };
+    var path = {};
+    path.root = './';
+    path.game = path.root + 'game/';
+    path.assets = path.game + 'assets/';
+    path.css = path.game + 'css/';
+    path.js = path.game + 'js/';
+    path.indexHtml = path.game + 'index.html';
 
     var glob = {
         allFiles: '**/*.*'
@@ -18,28 +19,20 @@
 
     gulp.task('serve', function(cb) {
         connect.server({
-            root: ['.'],
+            root: [path.game],
             port: 8000,
             host: 'localhost',
             https: true,
             livereload: true
         });
 
-        gulp.watch([
-            path.assets + glob.allFiles,
-            path.css + glob.allFiles,
-            path.js + glob.allFiles,
-        ], ['reload']);
+        gulp.watch([path.game + glob.allFiles], ['reload']);
 
         cb();
     });
 
     gulp.task('reload', function() {
-        return gulp.src([
-            path.assets + glob.allFiles,
-            path.css + glob.allFiles,
-            path.js + glob.allFiles,
-        ])
+        return gulp.src([path.game + glob.allFiles])
             .pipe(connect.reload());
     });
 

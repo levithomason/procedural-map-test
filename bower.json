@@ -13,6 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "phaser": "~2.2.2"
+    "phaser": "2.0.7",
+    "phaser-plugin-easystar": "~0.2.0"
   }
 }
